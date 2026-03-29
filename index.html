@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>进击的巨人 · 自由之翼论坛</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚔️</text></svg>">
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="site-header">
+    <div class="header-bg"></div>
+    <div class="header-content">
+      <div class="logo">
+        <span class="logo-icon">⚔️</span>
+        <div>
+          <h1>进击的巨人</h1>
+          <p>自由之翼论坛 · Wings of Freedom Forum</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="#home" class="nav-link active" data-page="home">🏠 首页</a>
+        <a href="#vote" class="nav-link" data-page="vote">🗳️ 角色投票</a>
+        <a href="#story" class="nav-link" data-page="story">📖 剧情分析</a>
+        <a href="#timeline" class="nav-link" data-page="timeline">🗺️ 故事线</a>
+        <a href="#forum" class="nav-link" data-page="forum">💬 论坛讨论</a>
+      </nav>
+      <div class="header-quote">"这个世界是残酷的，但也是美丽的。"</div>
+    </div>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <!-- 首页 -->
+    <section id="home" class="page active">
+      <!-- 英雄横幅 -->
+      <div class="hero-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+          <div class="hero-badge">Season 4 Final</div>
+          <h2>超越城墙的自由</h2>
+          <p>在这个被巨人支配的世界里，人类躲在三道巨大的城墙中苟延残喘。<br>而有一个少年，立志要消灭世上所有的巨人。</p>
+          <div class="hero-btns">
+            <button class="btn-primary" onclick="goPage('story')">探索剧情</button>
+            <button class="btn-secondary" onclick="goPage('vote')">角色投票</button>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-num">139</span>
+            <span class="stat-label">话完结</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">4</span>
+            <span class="stat-label">季动画</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">2013</span>
+            <span class="stat-label">首播年份</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">∞</span>
+            <span class="stat-label">经典传世</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 概述卡片 -->
+      <div class="section-title">
+        <h3>作品概述</h3>
+        <div class="title-line"></div>
+      </div>
+      <div class="overview-grid">
+        <div class="overview-card">
+          <div class="ov-icon">🧱</div>
+          <h4>世界观设定</h4>
+          <p>人类被迫居住在三道同心圆形的巨墙之内——玛利亚之墙、罗塞之墙、希娜之墙，与外界隔绝数百年，时刻面临来自巨人的威胁。</p>
+        </div>
+        <div class="overview-card">
+          <div class="ov-icon">⚔️</div>
+          <h4>调查兵团</h4>
+          <p>人类抵抗巨人的精英部队，手持立体机动装置，在城墙内外与巨人展开殊死搏斗，探索真相，追寻自由。</p>
+        </div>
+        <div class="overview-card">
+          <div class="ov-icon">🌊</div>
+          <h4>地鸣</html>
+          <p>埃连·耶格尔掌握的终极力量，数以亿计的巨人踏平一切的末日审判，也是这个故事最震撼人心的剧情转折。</p>
+        </div>
+        <div class="overview-card">
+          <div class="ov-icon">🎭</div>
+          <h4>主题思想</h4>
+          <p>作品深刻探讨了自由与束缚、战争与和平、仇恨与理解、生死与牺牲的永恒命题，被誉为近年来最具深度的动漫作品之一。</p>
+        </div>
+      </div>
+
+      <!-- 最新动态 -->
+      <div class="section-title">
+        <h3>论坛热帖</h3>
+        <div class="title-line"></div>
+      </div>
+      <div class="hot-posts" id="homePosts"></div>
+
+      <!-- 角色快览 -->
+      <div class="section-title">
+        <h3>核心角色一览</h3>
+        <div class="title-line"></div>
+      </div>
+      <div class="char-preview" id="charPreview"></div>
+    </section>
+
+    <!-- 角色投票页 -->
+    <section id="vote" class="page">
+      <div class="page-header">
+        <h2>🗳️ 最喜爱角色投票</h2>
+        <p>为你心目中最钟爱的角色投下一票！每人每角色每天可投一次。</p>
+      </div>
+      <div class="vote-filter">
+        <button class="filter-btn active" data-filter="all">全部角色</button>
+        <button class="filter-btn" data-filter="human">人类阵营</button>
+        <button class="filter-btn" data-filter="warrior">战士阵营</button>
+        <button class="filter-btn" data-filter="titan">巨人化角色</button>
+      </div>
+      <div class="vote-result-bar" id="voteTopBar">
+        <div class="vr-title">🏆 当前投票排名</div>
+        <div class="vr-list" id="voteRankList"></div>
+      </div>
+      <div class="vote-grid" id="voteGrid"></div>
+    </section>
+
+    <!-- 剧情分析页 -->
+    <section id="story" class="page">
+      <div class="page-header">
+        <h2>📖 剧情简介与分析</h2>
+        <p>深度解析《进击的巨人》各季剧情，探讨深层含义与伏笔</p>
+      </div>
+      <div class="story-tabs">
+        <button class="story-tab active" data-season="1">第一季</button>
+        <button class="story-tab" data-season="2">第二季</button>
+        <button class="story-tab" data-season="3">第三季</button>
+        <button class="story-tab" data-season="4">第四季(Final)</button>
+      </div>
+      <div class="story-content" id="storyContent"></div>
+
+      <!-- 主题深度分析 -->
+      <div class="section-title" style="margin-top:60px">
+        <h3>🔍 深度主题分析</h3>
+        <div class="title-line"></div>
+      </div>
+      <div class="analysis-grid" id="analysisGrid"></div>
+    </section>
+
+    <!-- 故事线时间轴 -->
+    <section id="timeline" class="page">
+      <div class="page-header">
+        <h2>🗺️ 故事线时间轴</h2>
+        <p>《进击的巨人》完整故事线梳理，还原2000年历史脉络</p>
+      </div>
+      <div class="timeline-wrapper" id="timelineWrapper"></div>
+    </section>
+
+    <!-- 论坛讨论 -->
+    <section id="forum" class="page">
+      <div class="page-header">
+        <h2>💬 论坛讨论</h2>
+        <p>和巨人迷们一起交流讨论，分享你的看法与感受</p>
+      </div>
+      <div class="forum-layout">
+        <div class="forum-main">
+          <!-- 发帖区 -->
+          <div class="post-form-card" id="postFormCard">
+            <h4>✍️ 发表新帖</h4>
+            <div class="form-row">
+              <input type="text" id="postAuthor" placeholder="你的昵称" maxlength="20">
+              <select id="postCategory">
+                <option value="general">综合讨论</option>
+                <option value="plot">剧情分析</option>
+                <option value="character">角色讨论</option>
+                <option value="theory">脑洞理论</option>
+                <option value="fan">同人创作</option>
+              </select>
+            </div>
+            <input type="text" id="postTitle" placeholder="帖子标题（必填）" maxlength="50">
+            <textarea id="postContent" placeholder="分享你的想法、感受、理论……（必填）" rows="4" maxlength="500"></textarea>
+            <div class="form-actions">
+              <span class="char-count" id="charCount">0/500</span>
+              <button class="btn-primary" onclick="submitPost()">🚀 发布</button>
+            </div>
+          </div>
+
+          <!-- 帖子列表 -->
+          <div class="forum-filter-bar">
+            <div class="forum-cats">
+              <button class="cat-btn active" data-cat="all">全部</button>
+              <button class="cat-btn" data-cat="general">综合</button>
+              <button class="cat-btn" data-cat="plot">剧情</button>
+              <button class="cat-btn" data-cat="character">角色</button>
+              <button class="cat-btn" data-cat="theory">理论</button>
+              <button class="cat-btn" data-cat="fan">同人</button>
+            </div>
+            <select id="sortSelect" onchange="renderPosts()">
+              <option value="time">最新发布</option>
+              <option value="hot">最热讨论</option>
+              <option value="likes">最多点赞</option>
+            </select>
+          </div>
+          <div class="posts-list" id="postsList"></div>
+        </div>
+        <div class="forum-sidebar">
+          <div class="sidebar-card">
+            <h4>📊 论坛统计</h4>
+            <div class="forum-stats" id="forumStats"></div>
+          </div>
+          <div class="sidebar-card">
+            <h4>🔥 热门标签</h4>
+            <div class="hot-tags" id="hotTags"></div>
+          </div>
+          <div class="sidebar-card">
+            <h4>🏆 活跃用户</h4>
+            <div class="active-users" id="activeUsers"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 回到顶部 -->
+  <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+  <!-- 回复弹窗 -->
+  <div class="modal-overlay" id="replyModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h4 id="replyModalTitle">回复帖子</h4>
+        <button class="modal-close" onclick="closeReplyModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="replyAuthor" placeholder="你的昵称" maxlength="20">
+        <textarea id="replyContent" placeholder="写下你的回复……" rows="4" maxlength="300"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeReplyModal()">取消</button>
+        <button class="btn-primary" onclick="submitReply()">回复</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 帖子详情弹窗 -->
+  <div class="modal-overlay" id="postDetailModal">
+    <div class="modal-box modal-large">
+      <div class="modal-header">
+        <h4 id="postDetailTitle">帖子详情</h4>
+        <button class="modal-close" onclick="closePostDetail()">✕</button>
+      </div>
+      <div class="modal-body" id="postDetailBody"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">⚔️ 进击的巨人 · 自由之翼论坛</div>
+      <p>本站为粉丝自制论坛，所有角色及剧情版权归原作者諫山創及相关公司所有</p>
+      <p>Shingeki no Kyojin / Attack on Titan Fan Forum · 2024</p>
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
